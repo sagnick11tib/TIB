@@ -1,0 +1,42 @@
+
+write a program to calculate the sum of all odd numbers snd even numbers between a range of number from m to n where m<n
+---------------------------------------------------------------------------
+import java.util.Scanner;
+
+public class SumOfOddEvenNumbers {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Input the range values m and n
+        System.out.print("Enter the value of m: ");
+        int m = scanner.nextInt();
+
+        System.out.print("Enter the value of n (greater than m): ");
+        int n = scanner.nextInt();
+
+        // Validate input to ensure m < n
+        if (m >= n) {
+            System.out.println("Invalid input. Please ensure m < n.");
+            return;
+        }
+
+        // Calculate and display the sum of odd and even numbers in the range
+        int sumOfOdd = 0;
+        int sumOfEven = 0;
+
+        for (int i = m; i <= n; i++) {
+            if (i % 2 == 0) {
+                // Even number
+                sumOfEven += i;
+            } else {
+                // Odd number
+                sumOfOdd += i;
+            }
+        }
+
+        System.out.println("Sum of odd numbers: " + sumOfOdd);
+        System.out.println("Sum of even numbers: " + sumOfEven);
+
+        scanner.close();
+    }
+}

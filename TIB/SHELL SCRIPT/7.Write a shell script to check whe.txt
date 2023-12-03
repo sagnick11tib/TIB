@@ -1,0 +1,21 @@
+7.Write a shell script to check whether the given number is armstrong number or not 
+
+#!/bin/bash
+
+echo "Enter a number:"
+read num
+
+originalNum=$num
+sum=0
+
+while [ $num -gt 0 ]; do
+    digit=$((num % 10))
+    sum=$((sum + digit * digit * digit))
+    num=$((num / 10))
+done
+
+if [ $sum -eq $originalNum ]; then
+    echo "$originalNum is an Armstrong Number."
+else
+    echo "$originalNum is not an Armstrong Number."
+fi

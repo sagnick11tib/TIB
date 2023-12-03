@@ -1,0 +1,61 @@
+12. Write a program by using a class with the following specifications:
+Class name — Calculate
+Instance variables:
+int num
+int f
+int rev
+Member Methods:
+Calculate(int n) — to initialize num with n, f and rev with 0 (zero)
+int prime() — to return 1, if number is prime
+int reverse() — to return reverse of the number
+void display() — to check and print whether the number is a prime palindrome or not.
+
+import java.util.Scanner;
+
+class Calculate {
+    int num;
+    int f;
+    int rev;
+
+    public Calculate(int n) {
+        num = n;
+        f = 0;
+        rev = 0;
+    }
+
+    int prime() {
+        for (int i = 2; i <= num / 2; i++) {
+            if (num % i == 0) {
+                return 0; 
+            }
+        }
+        return 1;
+    }
+
+    int reverse() {
+        int original = num;
+        while (original != 0) {
+            int digit = original % 10;
+            rev = rev * 10 + digit;
+            original /= 10;
+        }
+        return rev;
+    }
+
+    void display() {
+        if (num == reverse() && prime() == 1) {
+            System.out.println(num + " is a prime palindrome.");
+        } else {
+            System.out.println(num + " is not a prime palindrome.");
+        }
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter a number: ");
+        int number = scanner.nextInt();
+
+        Calculate calculate = new Calculate(number);
+        calculate.display();
+    }
+}

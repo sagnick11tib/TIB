@@ -1,0 +1,81 @@
+ Write a Java program to create a class known as "BankAccount" with methods called
+deposit() and withdraw(). Create a subclass called SavingsAccount that overrides the
+withdraw() method to prevent withdrawals if the account balance falls below one
+hundred.
+• BankAccount methods: constructor to accept accnt. No. and balance(initialise with an amount), deposit, withdraw, g
+etbalance
+• SavingsAccount method: constructor to pass accnt. No. and balance to superclass constructor, override withdraw
+• Main class: create an bankaccount with an initial balance,
+Deposit amount,
+withdraw amount
+create savingsaccount with initial balance,
+withdraw amount such that balance will be more than 100 after withdrawal
+withdraw amount such that balance will be less than 100 after withdrawal
+-----------------------------------------------------------------------------
+
+class BankAccount {
+    private String accountNumber;
+    private double balance;
+
+    BankAccount(String accountNumber, double initialBalance) {
+        this.accountNumber = accountNumber;
+        this.balance = initialBalance;
+    }
+
+    void deposit(double amount) {
+        balance += amount;
+        System.out.println("Deposited: " + amount);
+    }
+
+    void withdraw(double amount) {
+        if (amount <= balance) {
+            balance -= amount;
+            System.out.println("Withdrawn: " + amount);
+        } else {
+            System.out.println("Insufficient funds. Withdrawal failed.");
+        }
+    }
+
+    double getBalance() {
+        return balance;
+    }
+}
+
+class SavingsAccount extends BankAccount {
+    SavingsAccount(String accountNumber, double initialBalance) {
+        super(accountNumber, initialBalance);
+    }
+
+    @Override
+    void withdraw(double amount) {
+        if (getBalance() - amount >= 100) {
+            super.withdraw(amount);
+        } else {
+            System.out.println("Withdrawal failed. Minimum balance of 100 must be maintained.");
+        }
+    }
+}
+
+public class AccountDemo {
+    public static void main(String[] args) {
+        // Create a BankAccount with an initial balance
+        BankAccount bankAccount = new BankAccount("123456789", 500.0);
+
+        // Deposit and withdraw from the BankAccount
+        bankAccount.deposit(200.0);
+        bankAccount.withdraw(100.0);
+
+        System.out.println("BankAccount Balance: " + bankAccount.getBalance());
+
+        // Create a SavingsAccount with an initial balance
+        SavingsAccount savingsAccount = new SavingsAccount("987654321", 200.0);
+
+        // Withdraw from SavingsAccount to maintain balance above 100
+        savingsAccount.withdraw(50.0);
+
+        // Withdraw from SavingsAccount to fall below 100
+        savingsAccount.withdraw(100.0);
+
+        System.out.println("SavingsAccount Balance: " + savingsAccount.getBalance());
+    }
+}

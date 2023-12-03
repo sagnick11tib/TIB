@@ -1,0 +1,13 @@
+13.Write a shell script  to print "good morning"/"good evening"/"good night receiving system time .
+
+#!/bin/bash
+
+current_hour=$(date +"%H")
+
+if [ $current_hour -ge 6 -a $current_hour -lt 12 ]; then
+    echo "Good morning!"
+elif [ $current_hour -ge 12 -a $current_hour -lt 18 ]; then
+    echo "Good afternoon!"
+else
+    echo "Good night!"
+fi

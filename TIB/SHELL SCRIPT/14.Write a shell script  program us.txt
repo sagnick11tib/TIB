@@ -1,0 +1,42 @@
+14.Write a shell script  program using switch case to design basic calculator 
+
+#!/bin/bash
+
+echo "Enter the first number:"
+read num1
+
+echo "Enter the second number:"
+read num2
+
+echo "Select operation:"
+echo "1. Addition"
+echo "2. Subtraction"
+echo "3. Multiplication"
+echo "4. Division"
+read choice
+
+case $choice in
+    1)
+        result=$((num1 + num2))
+        echo "Sum: $result"
+        ;;
+    2)
+        result=$((num1 - num2))
+        echo "Difference: $result"
+        ;;
+    3)
+        result=$((num1 * num2))
+        echo "Product: $result"
+        ;;
+    4)
+        if [ $num2 -ne 0 ]; then
+            result=$(echo "scale=2; $num1 / $num2" | bc)
+            echo "Quotient: $result"
+        else
+            echo "Error: Division by zero."
+        fi
+        ;;
+    *)
+        echo "Invalid choice."
+        ;;
+esac

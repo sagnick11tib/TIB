@@ -1,0 +1,17 @@
+10.Write a program to count the number of times an object is created.
+
+class CountObject {
+    static int count = 0;
+
+    public CountObject() {
+        count++;
+    }
+
+    public static void main(String[] args) {
+        new CountObject();
+        new CountObject();
+        new CountObject();
+
+        System.out.println("Number of objects created: " + CountObject.count);
+    }
+}

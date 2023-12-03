@@ -1,0 +1,77 @@
+9.Write a program to define class with the following specifications:
+Class name — Number
+Data members/ Instance variables:
+int n — to hold an integer number
+Member methods:
+void input() — to accept an integer number in n
+void display() — to display the integer number input in n
+Now, inherit class Number to another class Check that is defined with the following
+specifications:
+Class name — Check
+Data members/ Instance variables:
+int fact
+int revnum
+Member methods:
+void find() — to find and print factorial of the number used in base class
+void palindrome() — to check and print whether the number used in base class is a
+palindrome number or not
+[A number is said to be palindrome if it appears the same after reversing its digits. e.g., 414,
+333, 515, etc.]
+
+import java.util.Scanner;
+
+class Number {
+    int n;
+
+    void input() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter an integer number: ");
+        n = scanner.nextInt();
+    }
+
+    void display() {
+        System.out.println("Number: " + n);
+    }
+}
+
+class Check extends Number {
+    int fact;
+    int revnum;
+
+    void find() {
+        int factResult = 1;
+        for (int i = 1; i <= n; i++) {
+            factResult *= i;
+        }
+        fact = factResult;
+        System.out.println("Factorial: " + fact);
+    }
+
+    void palindrome() {
+        int original = n;
+        int reversed = 0;
+        while (original != 0) {
+            int digit = original % 10;
+            reversed = reversed * 10 + digit;
+            original /= 10;
+        }
+        revnum = reversed;
+
+        if (n == revnum) {
+            System.out.println("The number is a palindrome.");
+        } else {
+            System.out.println("The number is not a palindrome.");
+        }
+    }
+}
+
+public class InheritanceExample {
+    public static void main(String[] args) {
+        Check obj = new Check();
+        obj.input();
+        obj.display();
+        obj.find();
+        obj.palindrome();
+    }
+}
+

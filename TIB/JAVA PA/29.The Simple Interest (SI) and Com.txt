@@ -1,0 +1,41 @@
+29.The Simple Interest (SI) and Compound Interest (CI) of a sum (P) for a given time (T) and
+rate (R) can be calculated as:
+(a) SI = (p * r * t) / 100 (b) CI = P * ((1 + (R / 100))T - 1)
+Write a program to input sum, rate, time and type of Interest ('S' for Simple Interest and 'C'
+for Compound Interest). Calculate and display the sum and the interest earned.
+------------------------------------------------------------------------------
+import java.util.Scanner;
+
+public class InterestCalculator {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter principal amount: ");
+        double principal = scanner.nextDouble();
+
+        System.out.print("Enter interest rate: ");
+        double rate = scanner.nextDouble();
+
+        System.out.print("Enter time in years: ");
+        double time = scanner.nextDouble();
+
+        System.out.print("Enter interest type (S for Simple, C for Compound): ");
+        char interestType = scanner.next().charAt(0);
+
+        scanner.close();
+
+        if (interestType == 'S' || interestType == 's') {
+            double simpleInterest = (principal * rate * time) / 100;
+            double totalAmount = principal + simpleInterest;
+            System.out.println("Simple Interest: " + simpleInterest);
+            System.out.println("Total Amount: " + totalAmount);
+        } else if (interestType == 'C' || interestType == 'c') {
+            double compoundInterest = principal * (Math.pow((1 + rate / 100), time) - 1);
+            double totalAmount = principal + compoundInterest;
+            System.out.println("Compound Interest: " + compoundInterest);
+            System.out.println("Total Amount: " + totalAmount);
+        } else {
+            System.out.println("Invalid interest type. Please enter 'S' for Simple or 'C' for Compound.");
+        }
+    }
+}

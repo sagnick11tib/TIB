@@ -1,0 +1,40 @@
+4.Write a program to demonstrate constructor chaining by creating 4 constructors and perform
+any 3 mathematical operations along with a default constructor.
+
+public class ConstructorChaining {
+    
+    public ConstructorChaining() {
+        System.out.println("Default constructor");
+    }
+
+    
+    public ConstructorChaining(int a) {
+        this();
+        System.out.println("Constructor with one parameter: " + a);
+    }
+
+   
+    public ConstructorChaining(int a, int b) {
+        this(a);
+        System.out.println("Constructor with two parameters: " + a + ", " + b);
+    }
+
+    
+    public ConstructorChaining(int a, int b, int c) {
+        this(a, b);
+        System.out.println("Constructor with three parameters: " + a + ", " + b + ", " + c);
+
+
+        int sum = a + b + c;
+        int product = a * b * c;
+        int quotient = (c != 0) ? (a / c) : 0;
+
+        System.out.println("Sum: " + sum);
+        System.out.println("Product: " + product);
+        System.out.println("Quotient: " + quotient);
+    }
+
+    public static void main(String[] args) {
+        ConstructorChaining obj = new ConstructorChaining(5, 10, 2);
+    }
+}

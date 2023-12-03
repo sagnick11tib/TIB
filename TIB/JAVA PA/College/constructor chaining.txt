@@ -1,0 +1,30 @@
+4.Write a program to demonstrate constructor chaining by creating 4 constructors and perform
+any 3 mathematical operations along with a default constructor.
+-------------------------------------------------------------------------
+class math{
+ math()
+{
+  this(5);
+  system.out.println("Default");
+}
+ math(int x)
+ {
+   this(10,3);
+   system.out.println(x);
+ }
+ math(int y, int z)
+  { 
+   this(12,1,2);
+   system.out.println(y+z);
+}
+ math(int a,int b, int c)
+{
+ system.out.println(a+b+c);
+}
+}
+public class constructorchain{
+ public static void main(String args[])
+  {
+    new math();
+  }
+}

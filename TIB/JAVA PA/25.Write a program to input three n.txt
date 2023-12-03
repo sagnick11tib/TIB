@@ -1,0 +1,41 @@
+25.Write a program to input three numbers and check whether they are equal or not. If they
+are unequal numbers then display the greatest among them otherwise, display the message
+'All the numbers are equal'.
+Sample Input: 34, 87, 61
+Sample Output: Greatest number: 87
+Sample Input: 81, 81, 81
+Sample Output: All the numbers are equal.
+-----------------------------------------------------------
+import java.util.Scanner;
+
+public class CompareNumbers {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+     
+        System.out.print("Enter the first number: ");
+        int num1 = scanner.nextInt();
+
+        System.out.print("Enter the second number: ");
+        int num2 = scanner.nextInt();
+
+        System.out.print("Enter the third number: ");
+        int num3 = scanner.nextInt();
+
+        
+        compareAndDisplay(num1, num2, num3);
+
+        scanner.close();
+    }
+
+   
+    private static void compareAndDisplay(int a, int b, int c) {
+        if (a == b && b == c) {
+            System.out.println("All the numbers are equal.");
+        } else {
+            int greatest = Math.max(Math.max(a, b), c);
+            System.out.println("Greatest number: " + greatest);
+        }
+    }
+}

@@ -1,0 +1,46 @@
+1.write a java program to create interface playable with a method play() takes noa rgument method and return void . Create three classes football,valleyball and  backetball that implement the playable interface override the play method to play respective sports
+
+
+
+interface Playable {
+    void play();
+}
+
+
+class Football implements Playable {
+    @Override
+    public void play() {
+        System.out.println("Playing Football");
+    }
+}
+
+
+class Volleyball implements Playable {
+    @Override
+    public void play() {
+        System.out.println("Playing Volleyball");
+    }
+}
+
+
+class Basketball implements Playable {
+    @Override
+    public void play() {
+        System.out.println("Playing Basketball");
+    }
+}
+
+
+public class Main {
+    public static void main(String[] args) {
+        
+        Football football = new Football();
+        Volleyball volleyball = new Volleyball();
+        Basketball basketball = new Basketball();
+
+        
+        football.play();
+        volleyball.play();
+        basketball.play();
+    }
+}

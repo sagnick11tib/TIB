@@ -1,0 +1,28 @@
+36.Write a program to input year and check whether it is:
+(a) a Leap year (b) a Century Leap year (c) a Century year but not a Leap year
+Sample Input: 2000
+Sample Output: It is a Century Leap Year.
+-----------------------------------------------------------------------------------
+import java.util.Scanner;
+
+public class YearChecker {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter a year: ");
+        int year = sc.nextInt();
+
+        if ((year % 4 == 0 && year % 100 != 0) || (year % 400 == 0)) {
+            System.out.println("It is a Leap Year.");
+            if (year % 100 == 0) {
+                System.out.println("It is a Century Leap Year.");
+            }
+        } else if (year % 100 == 0) {
+            System.out.println("It is a Century year but not a Leap Year.");
+        } else {
+            System.out.println("It is neither a Leap Year nor a Century year.");
+        }
+
+        sc.close();
+    }
+}

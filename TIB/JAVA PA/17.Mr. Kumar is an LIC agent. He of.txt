@@ -1,0 +1,55 @@
+17.Mr. Kumar is an LIC agent. He offers discount to his policy holders on the annual
+premium. However, he also gets commission on the sum assured as per the given tariff.
+Sum Assured Discount Commission
+Up to ₹ 1,00,000 5% 2%
+₹ 1,00,001 and up to ₹ 2,00,000 8% 3%
+₹ 2,00,001 and up to ₹ 5,00,000 10% 5%
+More than ₹ 5,00,000 15% 7.5%
+Write a program to input name of the policy holder, the sum assured and first annual
+premium. Calculate the discount of the policy holder and the commission of the agent. The
+program displays all the details as:
+Name of the policy holder :
+Sum assured :
+Premium :
+Discount on the first premium :
+Commission of the agent :
+
+
+import java.util.Scanner;
+
+public class LICAgent {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter the name of the policy holder: ");
+        String name = scanner.nextLine();
+
+        System.out.print("Enter the sum assured: ₹");
+        double sumAssured = scanner.nextDouble();
+
+        System.out.print("Enter the first annual premium: ₹");
+        double premium = scanner.nextDouble();
+
+        double discount = 0, commission = 0;
+
+        if (sumAssured <= 100000) {
+            discount = 0.05 * premium;
+            commission = 0.02 * sumAssured;
+        } else if (sumAssured <= 200000) {
+            discount = 0.08 * premium;
+            commission = 0.03 * sumAssured;
+        } else if (sumAssured <= 500000) {
+            discount = 0.1 * premium;
+            commission = 0.05 * sumAssured;
+        } else {
+            discount = 0.15 * premium;
+            commission = 0.075 * sumAssured;
+        }
+
+        System.out.println("Name of the policy holder: " + name);
+        System.out.println("Sum assured: ₹" + sumAssured);
+        System.out.println("Premium: ₹" + premium);
+        System.out.println("Discount on the first premium: ₹" + discount);
+        System.out.println("Commission of the agent: ₹" + commission);
+    }
+}

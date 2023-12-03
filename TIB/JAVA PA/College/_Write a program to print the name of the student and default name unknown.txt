@@ -1,0 +1,35 @@
+. Write a program to print the name of students by creating a Student class. If no name is
+passed while creating an object of Student class, then the name should be “Unknown”,
+otherwise the name should be equal to the String value passed while creating object of
+Student class
+------------------------------------------------------------------
+class Student {
+    private String name;
+
+    // Constructor with default name as "Unknown"
+    public Student() {
+        this.name = "Unknown";
+    }
+
+    // Constructor with a parameter to set the name
+    public Student(String name) {
+        this.name = name;
+    }
+
+    // Method to get the student's name
+    public String getName() {
+        return name;
+    }
+}
+
+public class StudentProgram {
+    public static void main(String[] args) {
+        // Create Student objects with and without names
+        Student student1 = new Student(); // Default name "Unknown"
+        Student student2 = new Student("Alice");
+
+        // Display the names of students
+        System.out.println("Student 1 name: " + student1.getName());
+        System.out.println("Student 2 name: " + student2.getName());
+    }
+}

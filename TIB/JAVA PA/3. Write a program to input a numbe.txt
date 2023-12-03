@@ -1,0 +1,57 @@
+3. Write a program to input a number and perform the following tasks:
+(a) to check whether it is a prime number or not
+(b) to reverse the number
+If the number as well as the reverse is also 'Prime' then display 'Twisted Prime' otherwise 'Not
+a twisted Prime'.
+Sample Input: 167
+Sample Output: 167 and 761 both are prime.
+It is a 'Twisted Prime'.
+
+import java.util.Scanner;
+
+public class TwistedPrime {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter a number: ");
+        int num = scanner.nextInt();
+
+        if (isPrime(num)) {
+            int reversedNum = reverseNumber(num);
+
+            if (isPrime(reversedNum)) {
+                System.out.println(num + " and " + reversedNum + " both are prime.");
+                System.out.println("It is a 'Twisted Prime'.");
+            } else {
+                System.out.println("The number is prime, but its reverse is not prime.");
+            }
+        } else {
+            System.out.println("The number is not prime.");
+        }
+    }
+
+    
+    private static boolean isPrime(int n) {
+        if (n <= 1) {
+            return false;
+        }
+
+        for (int i = 2; i <= Math.sqrt(n); i++) {
+            if (n % i == 0) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    private static int reverseNumber(int num) {
+        int reversed = 0;
+        while (num != 0) {
+            int digit = num % 10;
+            reversed = reversed * 10 + digit;
+            num /= 10;
+        }
+        return reversed;
+    }
+}

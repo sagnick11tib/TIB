@@ -1,0 +1,94 @@
+Write a program to use a class Account with the following specifications:
+Class name — Account
+Data members — int acno, float balance
+Member Methods:
+Account (int a, int b) — to initialize acno = a, balance = b
+void withdraw(int w) — to maintain the balance with withdrawal (balance - w)
+void deposit(int d) — to maintain the balance with the deposit (balance + d)
+Use another class Calculate which inherits from class Account with the following
+specifications:
+Data members — int r,t ; float si,amt;
+Member Methods:
+void accept(int x, int y) — to initialize r=x,t=y,amt=0
+void compute() — to find simple interest and amount
+si = (balance * r * t) / 100;
+amt = balance + si;
+void display() — to print account number, balance, interest and amount
+main() function need not to be used
+
+-------------------------------------------------------------------------------
+import java.util.Scanner;
+
+class Account {
+    int acno;
+    float balance;
+
+    Account(int a, float b) {
+        acno = a;
+        balance = b;
+    }
+
+    void withdraw(int w) {
+        balance -= w;
+    }
+
+    void deposit(int d) {
+        balance += d;
+    }
+}
+
+class Calculate extends Account {
+    int r, t;
+    float si, amt;
+
+    Calculate(int a, float b) {
+        super(a, b);
+    }
+
+    void calculateInterest(int x, int y) {
+        r = x;
+        t = y;
+        si = (balance * r * t) / 100;
+        amt = balance + si;
+    }
+
+    void display() {
+        System.out.println("Account Number: " + acno);
+        System.out.println("Balance: " + balance);
+        System.out.println("Interest: " + si);
+        System.out.println("Amount: " + amt);
+    }
+}
+
+public class AccountDemo {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter Account Number: ");
+        int acno = scanner.nextInt();
+
+        System.out.print("Enter Initial Balance: ");
+        float balance = scanner.nextFloat();
+
+        Calculate account = new Calculate(acno, balance);
+
+        System.out.print("Enter Withdrawal Amount: ");
+        int withdrawAmount = scanner.nextInt();
+        account.withdraw(withdrawAmount);
+
+        System.out.print("Enter Deposit Amount: ");
+        int depositAmount = scanner.nextInt();
+        account.deposit(depositAmount);
+
+        System.out.print("Enter Rate of Interest: ");
+        int rate = scanner.nextInt();
+
+        System.out.print("Enter Time (in years): ");
+        int time = scanner.nextInt();
+
+        account.calculateInterest(rate, time);
+        account.display();
+
+        scanner.close();
+    }
+}

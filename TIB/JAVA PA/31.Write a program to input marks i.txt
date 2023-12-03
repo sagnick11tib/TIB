@@ -1,0 +1,44 @@
+31.Write a program to input marks in English, Maths and Science of 40 students who have
+passed an Examination of 2023. Now, perform the following tasks:
+(a) Number of students, who have secured 95% or more in all the subjects.
+(b) Number of students, who have secured 90% or more in English, Maths and Science.
+------------------------------------------------------------------------------
+import java.util.Scanner;
+
+public class Exam {
+    public static void main(String[] args) {
+        Scanner s = new Scanner(System.in);
+
+        int n = 40;
+        int a = 0;
+        int b = 0;
+
+        for (int i = 1; i <= n; i++) {
+            System.out.println("Enter marks for student " + i + ":");
+
+            System.out.print("E: ");
+            double e = s.nextDouble();
+
+            System.out.print("M: ");
+            double m = s.nextDouble();
+
+            System.out.print("S: ");
+            double sci = s.nextDouble();
+
+            
+            if (e >= 95 && m >= 95 && sci >= 95) {
+                a++;
+            }
+
+            
+            if (e >= 90 && m >= 90 && sci >= 90) {
+                b++;
+            }
+        }
+
+        System.out.println("Num of students with 95% or more in all subjects: " + a);
+        System.out.println("Num of students with 90% or more in E, M, and S: " + b);
+
+        s.close();
+    }
+}

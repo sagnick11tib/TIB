@@ -1,0 +1,38 @@
+wap to display all the buzz number between p and q . a buzz number is a number which ends with 7 or divisible by 7
+
+----------------------------------------------------------------
+import java.util.Scanner;
+
+public class BuzzNumbersInRange {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Input the range values p and q
+        System.out.print("Enter the value of p: ");
+        int p = scanner.nextInt();
+
+        System.out.print("Enter the value of q (q > p): ");
+        int q = scanner.nextInt();
+
+        // Validate input to ensure q > p
+        if (q <= p) {
+            System.out.println("Invalid input. Please ensure q > p.");
+            return;
+        }
+
+        System.out.println("Buzz numbers between " + p + " and " + q + ":");
+
+        for (int i = p; i <= q; i++) {
+            if (isBuzzNumber(i)) {
+                System.out.println(i);
+            }
+        }
+
+        scanner.close();
+    }
+
+    // Function to check if a number is a buzz number
+    static boolean isBuzzNumber(int num) {
+        return num % 10 == 7 || num % 7 == 0;
+    }
+}

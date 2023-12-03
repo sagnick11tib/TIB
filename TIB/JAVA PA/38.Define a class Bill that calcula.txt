@@ -1,0 +1,87 @@
+38.Define a class Bill that calculates the telephone bill of a consumer with the following
+description:
+Data Members Purpose:
+int bno bill number
+String name name of consumer
+int call no. of calls consumed in a month
+double amt bill amount to be paid by the person
+Member Methods Purpose
+Bill() constructor to initialize data members with default initial value
+Bill(...) parameterised constructor to accept billno, name and no. of calls consumed
+Calculate() to calculate the monthly telephone bill for a consumer as per the table given
+below:
+Display() to display the details
+Units consumed RateFirst 100 calls ₹0.60 / call
+Next 100 calls ₹0.80 / call
+Next 100 calls ₹1.20 / call
+Above 300 calls ₹1.50 / call
+Fixed monthly rental applicable to all consumers: ₹125
+----------------------------------------------------------------------------------------
+import java.util.Scanner;
+
+class Bill {
+    int bno;
+    String name;
+    int call;
+    double amt;
+
+    Bill() {
+        bno = 0;
+        name = "";
+        call = 0;
+        amt = 0.0;
+    }
+
+    Bill(int bno, String name, int call) {
+        this.bno = bno;
+        this.name = name;
+        this.call = call;
+        amt = 0.0;
+    }
+
+    void calculate() {
+        int unitCharge;
+        int fixedRental = 125;
+
+        if (call <= 100) {
+            unitCharge = call * 60;
+        } else if (call <= 200) {
+            unitCharge = 100 * 60 + (call - 100) * 80;
+        } else if (call <= 300) {
+            unitCharge = 100 * 60 + 100 * 80 + (call - 200) * 120;
+        } else {
+            unitCharge = 100 * 60 + 100 * 80 + 100 * 120 + (call - 300) * 150;
+        }
+
+        amt = unitCharge + fixedRental;
+    }
+
+    void display() {
+        System.out.println("Bill Number: " + bno);
+        System.out.println("Consumer Name: " + name);
+        System.out.println("Number of Calls: " + call);
+        System.out.println("Bill Amount: ₹" + amt);
+    }
+}
+
+public class BillDemo {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter Bill Number: ");
+        int bno = sc.nextInt();
+        sc.nextLine();
+
+        System.out.print("Enter Consumer Name: ");
+        String name = sc.nextLine();
+
+        System.out.print("Enter Number of Calls Consumed: ");
+        int call = sc.nextInt();
+
+        Bill consumerBill = new Bill(bno, name, call);
+        consumerBill.calculate();
+        consumerBill.display();
+
+        sc.close();
+    }
+}

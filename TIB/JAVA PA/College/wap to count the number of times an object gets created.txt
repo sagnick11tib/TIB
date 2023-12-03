@@ -1,0 +1,29 @@
+wap to count the number of times an object is created(using static method and variable)
+
+
+-----------------------------------------------------------------
+class ObjectCounter {
+    private static int objectCount = 0;
+
+    ObjectCounter() {
+        // Increment the count each time an object is created
+        objectCount++;
+    }
+
+    // Static method to get the count of created objects
+    static int getObjectCount() {
+        return objectCount;
+    }
+}
+
+public class ObjectCreationCounter {
+    public static void main(String[] args) {
+        // Creating objects of ObjectCounter
+        ObjectCounter obj1 = new ObjectCounter();
+        ObjectCounter obj2 = new ObjectCounter();
+        ObjectCounter obj3 = new ObjectCounter();
+
+        // Display the count of created objects
+        System.out.println("Number of objects created: " + ObjectCounter.getObjectCount());
+    }
+}

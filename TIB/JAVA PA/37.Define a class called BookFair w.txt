@@ -1,0 +1,67 @@
+37.Define a class called BookFair with the following description:
+Data Members Purpose:
+String Bname stores the name of the book
+double price stores the price of the book
+Member Methods Purpose:
+BookFair( ) Constructor to initialize data members
+void input( ) To input and store the name and price of the book
+void calculate( ) To calculate the price after discount. Discount is calculated as per the table
+given below:
+void display( ) To display the name and price of the book after discount
+Price DiscountLess than or equal to ₹1000 2% of price
+More than ₹1000 and less than or equal to ₹3000 10% of price
+More than ₹3000 15% of price
+Write a main method to create an object of the class and call the above member methods.
+----------------------------------------------------------------------------------------
+import java.util.Scanner;
+
+class BookFair {
+    String Bname;
+    double price;
+
+    
+    BookFair() {
+        Bname = "";
+        price = 0.0;
+    }
+
+    
+    void input() {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter the name of the book: ");
+        Bname = scanner.nextLine();
+
+        System.out.print("Enter the price of the book: ₹");
+        price = scanner.nextDouble();
+
+        scanner.close();
+    }
+
+    
+    void calculate() {
+        if (price <= 1000) {
+            price -= (0.02 * price);
+        } else if (price > 1000 && price <= 3000) {
+            price -= (0.10 * price);
+        } else {
+            price -= (0.15 * price);
+        }
+    }
+
+    
+    void display() {
+        System.out.println("Book Name: " + Bname);
+        System.out.println("Price After Discount: ₹" + price);
+    }
+}
+
+public class BookFairDemo {
+    public static void main(String[] args) {
+        BookFair book = new BookFair();
+        
+        book.input();
+        book.calculate();
+        book.display();
+    }
+}

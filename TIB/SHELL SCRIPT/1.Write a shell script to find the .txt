@@ -1,0 +1,15 @@
+1.Write a shell script to find the sum and product of two number
+
+#!/bin/bash
+
+echo "Enter the first number:"
+read num1
+
+echo "Enter the second number:"
+read num2
+
+sum=$((num1 + num2))
+product=$((num1 * num2))
+
+echo "Sum: $sum"
+echo "Product: $product"

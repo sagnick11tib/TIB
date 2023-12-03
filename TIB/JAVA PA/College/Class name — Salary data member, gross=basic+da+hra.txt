@@ -1,0 +1,42 @@
+Write a program by using a class with the following specifications:
+Class name — Salary
+Data members — private int basic
+Member functions:
+void input() — to input basic pay
+void display() — to find and print the following:
+da = 30% of basic
+hra = 10% of basic
+gross = basic + da + hra
+Use a main function to create an object and call member methods of the class
+----------------------------------------------------------------------------------
+import java.util.Scanner;
+
+class Salary {
+    private int basic;
+
+    void input() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter Basic Pay: ");
+        basic = scanner.nextInt();
+    }
+
+    void display() {
+        double da = 0.3 * basic;
+        double hra = 0.1 * basic;
+        double gross = basic + da + hra;
+
+        System.out.println("Basic Pay: " + basic);
+        System.out.println("DA (30% of Basic): " + da);
+        System.out.println("HRA (10% of Basic): " + hra);
+        System.out.println("Gross Salary: " + gross);
+    }
+}
+
+public class SalaryDemo {
+    public static void main(String[] args) {
+        Salary employeeSalary = new Salary();
+        
+        employeeSalary.input();
+        employeeSalary.display();
+    }
+}

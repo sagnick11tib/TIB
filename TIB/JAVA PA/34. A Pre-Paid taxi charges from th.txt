@@ -1,0 +1,40 @@
+34. A Pre-Paid taxi charges from the passenger as per the tariff given below:
+Distance Rate
+Up to 5 km ₹ 100
+For the next 10 km ₹ 10/km
+For the next 10 km ₹ 8/km
+More than 25 km ₹ 5/km
+Write a program to input the distance covered and calculate the amount paid by the passenger.
+The program displays the printed bill with the details given below:
+Taxi No. :
+Distance covered :
+Amount :
+----------------------------------------------------------------------
+import java.util.Scanner;
+
+public class TaxiBill {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter the distance covered in kilometers: ");
+        double distance = sc.nextDouble();
+
+        double amount;
+        if (distance <= 5) {
+            amount = 100;
+        } else if (distance <= 15) {
+            amount = 100 + (distance - 5) * 10;
+        } else if (distance <= 25) {
+            amount = 100 + 10 * 10 + (distance - 15) * 8;
+        } else {
+            amount = 100 + 10 * 10 + 10 * 8 + (distance - 25) * 5;
+        }
+
+        System.out.println("\nTaxi Bill:");
+        System.out.println("Taxi No. : XYZ123");
+        System.out.println("Distance covered : " + distance + " km");
+        System.out.println("Amount : ₹" + amount);
+
+        sc.close();
+    }
+}

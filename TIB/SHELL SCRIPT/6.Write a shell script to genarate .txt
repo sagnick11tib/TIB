@@ -1,0 +1,19 @@
+6.Write a shell script to genarate fibonacci sries upto the given no
+
+#!/bin/bash
+
+echo "Enter the limit for Fibonacci series:"
+read limit
+
+num1=0
+num2=1
+echo "Fibonacci series up to $limit:"
+echo -n "$num1, $num2"
+
+while [ $num2 -le $limit ]; do
+    next=$((num1 + num2))
+    echo -n ", $next"
+    num1=$num2
+    num2=$next
+done
+echo ""

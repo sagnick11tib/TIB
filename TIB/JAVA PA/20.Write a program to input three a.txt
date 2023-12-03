@@ -1,0 +1,29 @@
+20.Write a program to input three angles of a triangle and check whether a triangle is possible
+or not. If possible then check whether it is an acute-angled triangle, right-angled or an obtuseangled triangle otherwise, display 'Triangle not possible'.
+Sample Input: Enter three angles: 40, 50, 90
+Sample Output: Right-angled Triangle
+
+import java.util.Scanner;
+
+public class TriangleType {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter three angles of a triangle: ");
+        int angle1 = scanner.nextInt();
+        int angle2 = scanner.nextInt();
+        int angle3 = scanner.nextInt();
+
+        if (angle1 + angle2 + angle3 == 180) {
+            if (angle1 == 90 || angle2 == 90 || angle3 == 90) {
+                System.out.println("Right-angled Triangle");
+            } else if (angle1 < 90 && angle2 < 90 && angle3 < 90) {
+                System.out.println("Acute-angled Triangle");
+            } else {
+                System.out.println("Obtuse-angled Triangle");
+            }
+        } else {
+            System.out.println("Triangle not possible.");
+        }
+    }
+}

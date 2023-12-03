@@ -1,0 +1,28 @@
+9.Write a shell script to calculate the total and average of a students searching the roll no from stud file
+
+#!/bin/bash
+
+echo "Enter the roll number to search:"
+read search_roll
+
+# Assuming stud file is in the format: roll_no name marks
+# For example: 101 John 80
+#               102 Jane 75
+
+line=$(grep -w "^$search_roll" stud)
+
+if [ -n "$line" ]; then
+    total_marks=$(echo "$line" | awk '{print $3}')
+    total=0
+
+    for marks in $total_marks; do
+        total=$((total + marks))
+    done
+
+    average=$(echo "scale=2; $total / $(echo "$line" | wc -w)" | bc)
+
+    echo "Total marks: $total"
+    echo "Average marks: $average"
+else
+    echo "Roll number not found."
+fi

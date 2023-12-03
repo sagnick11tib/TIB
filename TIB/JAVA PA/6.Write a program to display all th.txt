@@ -1,0 +1,26 @@
+6.Write a program to display all the numbers between m and n input from the keyboard
+(where m<n, m>0, n>0), check and print the numbers that are perfect square. e.g. 25, 36,
+49, are said to be perfect square numbers.
+
+import java.util.Scanner;
+
+public class PerfectSquareNumbers {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter the value of m: ");
+        int m = scanner.nextInt();
+
+        System.out.print("Enter the value of n: ");
+        int n = scanner.nextInt();
+
+        System.out.println("Perfect square numbers between " + m + " and " + n + ":");
+
+        for (int i = m; i <= n; i++) {
+            double sqrt = Math.sqrt(i);
+            if (sqrt == (int) sqrt) {
+                System.out.print(i + " ");
+            }
+        }
+    }
+}

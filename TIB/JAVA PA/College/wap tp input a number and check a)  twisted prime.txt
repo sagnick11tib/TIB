@@ -1,0 +1,57 @@
+wap tp input a number and check: a) whether it is a prime or not. b) whether it is twisted prime or not
+
+---------------------------------------------------------------
+import java.util.Scanner;
+
+public class EasyPrimeCheck {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Input a number
+        System.out.print("Enter a number: ");
+        int number = scanner.nextInt();
+
+        // Check if it is a prime number
+        if (isPrime(number)) {
+            System.out.println(number + " is a prime number.");
+        } else {
+            System.out.println(number + " is not a prime number.");
+        }
+
+        // Check if it is a twisted prime number
+        if (isTwistedPrime(number)) {
+            System.out.println(number + " is a twisted prime number.");
+        } else {
+            System.out.println(number + " is not a twisted prime number.");
+        }
+
+        scanner.close();
+    }
+
+    // Function to check if a number is prime
+    static boolean isPrime(int num) {
+        if (num < 2) {
+            return false;
+        }
+        for (int i = 2; i * i <= num; i++) {
+            if (num % i == 0) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    // Function to check if a number is twisted prime
+    static boolean isTwistedPrime(int num) {
+        int reversedNum = 0;
+        int originalNum = num;
+
+        while (num != 0) {
+            reversedNum = reversedNum * 10 + num % 10;
+            num /= 10;
+        }
+
+        return isPrime(originalNum) && isPrime(reversedNum);
+    }
+}
+

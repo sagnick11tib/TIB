@@ -1,0 +1,20 @@
+14.WAP to find factorial of a number using command line arguments
+Hint: int a = Integer.parseInt(args[0]);
+
+
+public class FactorialCommandLine {
+    public static void main(String[] args) {
+        if (args.length == 1) {
+            int num = Integer.parseInt(args[0]);
+            int factorial = 1;
+
+            for (int i = 1; i <= num; i++) {
+                factorial *= i;
+            }
+
+            System.out.println("Factorial of " + num + " is: " + factorial);
+        } else {
+            System.out.println("Please provide a single command line argument as the number.");
+        }
+    }
+}
